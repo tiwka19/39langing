@@ -1,0 +1,43 @@
+<script src="js/app.min.js"></script>
+
+<script>
+	setTimeout(function () {
+		let elem = document.createElement('script')
+		elem.src =
+			'https://api-maps.yandex.ru/2.1/?apikey=59037372-5663-482e-9a7d-56426e4a0f94&lang=ru_RU&onload=init'
+		document.getElementsByTagName('body')[0].appendChild(elem)
+	}, 1000)
+	function init() {
+		const myMap = new ymaps.Map('map', {
+			controls: [],
+			center: [54.72165, 20.496563],
+			zoom: 17,
+		})
+
+		let myPlacemark = new ymaps.Placemark(
+			[54.72165, 20.496563],
+			{
+				balloonContentHeader: 'Генделя, дом 3А',
+				balloonContentBody: '2 этаж, кабинет 205',
+				balloonContentFooter: '+ 7(911)-491-88-54',
+				hasBalloon: true,
+				hideIconOnBalloonOpen: true,
+			},
+			{
+				// Необходимо указать данный тип макета.
+				iconLayout: 'default#imageWithContent',
+				// Своё изображение иконки метки.
+				iconImageHref: 'img/icons/map.svg',
+				// Размеры метки.
+				iconImageSize: [40, 40],
+				// Смещение левого верхнего угла иконки относительно
+				// её "ножки" (точки привязки).
+				iconImageOffset: [-20, -20],
+				// Смещение слоя с содержимым относительно слоя с картинкой.
+				iconContentOffset: [0, 0],
+			}
+		)
+		myMap.geoObjects.add(myPlacemark)
+		myMap.behaviors.disable('scrollZoom')
+	}
+</script>

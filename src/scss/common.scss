@@ -1,0 +1,23 @@
+// Заголовки, загальні БЕМ блоки та інше...
+.page {
+	@include adaptiveValue('padding-top', 120, 60);
+}
+
+section:not(:first-child) {
+	@include adaptiveValue('padding-top', 50, 25);
+	@include adaptiveValue('padding-bottom', 50, 25);
+}
+
+._section-title {
+	@include adaptiveValue('font-size', 50, 38);
+	line-height: math.div(60, 50);
+	font-family: $fontFamilySecondary;
+	color: #1b1b1e;
+	text-align: center;
+	font-weight: 500;
+	@include adaptiveValue('margin-bottom', 50, 30);
+}
+
+.ymaps-2-1-79-gototech {
+	display: none !important;
+}

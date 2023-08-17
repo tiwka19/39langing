@@ -1,0 +1,95 @@
+//====================================================================================================
+.footer {
+	padding: rem(50) 0;
+	&__container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: rem(15);
+		@media (max-width: $mobile) {
+			flex-direction: column;
+		}
+	}
+	&__logo {
+		display: flex;
+		align-items: center;
+		gap: rem(18);
+		position: relative;
+		z-index: 51;
+		@media (max-width: $mobile) {
+			margin-bottom: rem(30);
+		}
+	}
+	&__logo span:first-child {
+		font-family: $fontFamilySecondary;
+		@include adaptiveValue('font-size', 24, 18);
+		font-weight: 600;
+	}
+
+	&__logo span:last-child {
+		letter-spacing: rem(3);
+		@include adaptiveValue('font-size', 12, 10);
+		font-weight: 500;
+		text-transform: uppercase;
+	}
+	&__menu {
+		flex: 1 1 auto;
+		@media (max-width: $mobile) {
+			margin-bottom: rem(30);
+		}
+	}
+	&__menu-list {
+		display: grid;
+		grid-template-columns: max-content max-content;
+		@include adaptiveValue('column-gap', 50, 25);
+		row-gap: rem(25);
+		justify-content: center;
+		@media (max-width: $mobile) {
+			grid-template-columns: auto;
+			text-align: center;
+			gap: rem(20);
+			font-weight: 500;
+		}
+	}
+	&__menu-link {
+		transition: color 0.3s ease 0s;
+		font-weight: 500;
+		@media (any-hover: hover) {
+			&:hover {
+				color: #8ad9a6;
+			}
+		}
+	}
+	&__contacts-title {
+		margin-bottom: rem(15);
+		font-weight: 500;
+		@media (max-width: $mobile) {
+			text-align: center;
+			margin-bottom: rem(30);
+		}
+	}
+	&__contacts-icons {
+		display: flex;
+		align-items: center;
+		gap: rem(15);
+		@media (max-width: $mobileSmall) {
+			justify-content: center;
+			row-gap: rem(25);
+		}
+	}
+	&__contacts-icon {
+		transition: transform 0.3s ease 0s;
+		@media (any-hover: hover) {
+			&:hover {
+				transform: scale(0.9);
+			}
+		}
+		@media (max-width: $mobileSmall) {
+			flex: 0 1 30.333%;
+			text-align: center;
+		}
+	}
+}
+
+//====================================================================================================

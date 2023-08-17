@@ -1,0 +1,240 @@
+//====================================================================================================
+.header {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	padding: rem(40) 0;
+	z-index: 50;
+	transition: all 0.3s ease 0s;
+
+	&._header-scroll {
+		background-color: #fff;
+		box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+		padding: rem(20) 0;
+	}
+
+	@media (max-width: $mobile) {
+		padding: rem(20) 0;
+	}
+
+	&__container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		position: relative;
+	}
+
+	&__logo {
+		display: flex;
+		align-items: center;
+		gap: rem(18);
+		position: relative;
+		z-index: 51;
+	}
+
+	&__logo span:first-child {
+		font-family: $fontFamilySecondary;
+		@include adaptiveValue('font-size', 20, 16);
+		font-weight: 600;
+	}
+
+	&__logo span:last-child {
+		letter-spacing: rem(3);
+		@include adaptiveValue('font-size', 12, 10);
+		font-weight: 500;
+		text-transform: uppercase;
+	}
+
+	&__button {
+		padding: rem(8) rem(27);
+		border: rem(2) solid #b5eac8;
+		border-radius: rem(30) rem(10);
+		font-weight: 500;
+		transition: all 0.3s ease 0s;
+		@media (any-hover: hover) {
+			&:hover {
+				background-color: #b5eac8;
+				border: rem(2) solid transparent;
+				border-radius: rem(30);
+			}
+		}
+		@media (max-width: $mobile) {
+			font-size: rem(22);
+		}
+	}
+}
+
+.logo {
+	z-index: 51;
+
+	&__text {
+		display: flex;
+		flex-direction: column;
+		gap: rem(5);
+	}
+}
+
+.menu {
+	flex: 1 1 auto;
+	@include adaptiveValue('padding-right', 133, 30, 3, 1920, 768);
+
+	&__body {
+		@media (max-width: $mobile) {
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			top: 0;
+			left: -100%;
+			transition: all 0.3s ease 0s;
+			overflow: auto;
+			background-color: #fff;
+			gap: rem(30);
+			padding-top: rem(120);
+			padding-left: rem(15);
+			padding-right: rem(15);
+			padding-bottom: rem(30);
+
+			&::before {
+				content: '';
+				position: fixed;
+				top: 0;
+				left: -100%;
+				transition: all 0.3s ease 0s;
+				width: 100%;
+				height: rem(78);
+				background-color: #fff;
+				z-index: 10;
+			}
+
+			.menu-open & {
+				left: 0;
+
+				&::before {
+					left: 0;
+				}
+			}
+		}
+	}
+
+	&__list {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		gap: rem(52);
+		@include adaptiveValue('gap', 52, 30, 3, 1920, 768);
+		z-index: 3;
+
+		@media (max-width: $mobile) {
+			flex-direction: column;
+		}
+	}
+
+	&__item {
+		position: relative;
+		&::after {
+			content: '';
+			position: absolute;
+			width: 100%;
+			transform: scaleX(0);
+			height: rem(2);
+			bottom: rem(-2);
+			left: 0;
+			background-color: #8ad9a6;
+			transform-origin: bottom right;
+			transition: transform 0.25s ease-out;
+		}
+
+		@media (any-hover: hover) {
+			&:hover {
+				&::after {
+					transform: scaleX(1);
+					transform-origin: bottom left;
+				}
+			}
+		}
+	}
+
+	&__link {
+		line-height: math.div(22, 18);
+		font-weight: 500;
+		transition: color 0.3s ease 0s;
+		@media (any-hover: hover) {
+			&:hover {
+				color: #8ad9a6;
+			}
+		}
+		@media (max-width: $mobile) {
+			font-size: rem(22);
+		}
+	}
+}
+
+//====================================================================================================
+
+//Burger
+
+.icon-menu {
+	display: none;
+
+	@media (max-width: $tablet) {
+		display: block;
+		position: relative;
+		width: rem(16);
+		height: rem(20);
+		flex: 0 0 rem(16);
+		margin-right: rem(30);
+		cursor: pointer;
+		z-index: 100;
+
+		span,
+		&::before,
+		&::after {
+			content: '';
+			transition: all 0.3s ease 0s;
+			left: 0;
+			position: absolute;
+			width: 100%;
+			height: rem(3);
+			background-color: #2d3538;
+			border-radius: rem(50);
+		}
+
+		&::before {
+			top: 0;
+		}
+
+		&::after {
+			bottom: 0;
+		}
+
+		span {
+			top: calc(50% - rem(2));
+			width: rem(28);
+		}
+
+		.menu-open & {
+			span {
+				width: 0;
+			}
+
+			&::before,
+			&::after {
+				width: rem(20);
+			}
+
+			&::before {
+				top: calc(50% - rem(2));
+				transform: rotate(-45deg);
+			}
+
+			&::after {
+				bottom: calc(50% - rem(1));
+				transform: rotate(45deg);
+			}
+		}
+	}
+}
